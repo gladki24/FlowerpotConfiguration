@@ -3,12 +3,30 @@
 //
 
 #include "library.h"
+#include "classes/Parser.h"
+
+class A : public FlowerpotConfiguration::ConfigurationParsable {
+public:
+    int i;
+    float f;
+    double d;
+    bool b;
+    std::string s;
+
+    void parse(const std::string &str) override {
+        i = 5;
+        f = 3.2;
+        d = 3.2;
+        b = false;
+        s = "Some";
+    }
+};
 
 int main() {
-    FlowerpotConfiguration::File config("./keys-values-file.txt");
+    FlowerpotConfiguration::Parser parser;
+    A a;
 
-    auto m = config.load();
-    config.save(m);
+    parser.parse(a, "Some");
 
     return 0;
 }
