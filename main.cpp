@@ -4,30 +4,18 @@
 
 #include "library.h"
 #include "classes/Parser.h"
+#include "classes/Serializer.h"
 
-class A : public FlowerpotConfiguration::ConfigurationParsable {
+class A : public FlowerpotConfiguration::ConfigurationSerializable {
 public:
-    int i;
-    float f;
-    double d;
-    bool b;
-    std::string s;
-
-    void parse(const std::string &str) override {
-        i = 5;
-        f = 3.2;
-        d = 3.2;
-        b = false;
-        s = "Some";
+    std::string serialize() const override {
+        return "i:" + std::to_string(i);
     }
+private:
+    int i = 4;
 };
 
 int main() {
-    FlowerpotConfiguration::Parser parser;
-    A a;
-
-    parser.parse(a, "Some");
-
     return 0;
 }
 
