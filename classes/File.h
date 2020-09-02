@@ -24,13 +24,17 @@ namespace FlowerpotConfiguration {
 
         ~File() = default;
 
-        std::map<std::string, std::string> load();
-
-        std::map<std::string, std::string> load(const std::string path);
-
         void setPath(const std::string path);
 
         std::string getPath() const;
+
+        std::map<std::string, std::string> load() const;
+
+        static std::map<std::string, std::string> load(const std::string &path);
+
+        void save(const std::map<std::string, std::string> &map) const;
+
+        static void save(const std::string &path, const std::map<std::string, std::string> &map);
 
     private:
         std::string _path;

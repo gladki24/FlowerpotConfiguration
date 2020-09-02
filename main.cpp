@@ -5,8 +5,10 @@
 #include "library.h"
 
 int main() {
-    FlowerpotConfiguration::File config("./key-value-file.txt");
-    config.load();
+    FlowerpotConfiguration::File config("./keys-values-file.txt");
+
+    auto m = config.load();
+    config.save(m);
 
     return 0;
 }

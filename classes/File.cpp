@@ -20,13 +20,12 @@ namespace FlowerpotConfiguration {
         return _path;
     }
 
-    std::map<std::string, std::string> File::load(const std::string path) {
+    std::map<std::string, std::string> File::load(const std::string &path) {
         std::ifstream file(path);
 
         if (file.is_open()) {
-            // TODO refactor regex
             std::regex keyRegex(R"(([\w\d])+(?=[\s\=]))");
-            std::regex valueRegex(R"()");
+            std::regex valueRegex(R"([^=\s]+$)");
 
             std::smatch keyMatch;
             std::smatch valueMatch;
@@ -35,24 +34,40 @@ namespace FlowerpotConfiguration {
             std::map<std::string, std::string> configuration;
 
             while (std::getline(file, line)) {
-                std::cout << line << std::endl;
                 bool hasKey = std::regex_search(line, keyMatch, keyRegex);
                 bool hasValue = std::regex_search(line, valueMatch, valueRegex);
 
                 if (hasKey && hasValue) {
-                    configuration.insert(keyMatch.str(), valueMatch.str());
+                    configuration[keyMatch.str()] = valueMatch.str();
                 }
             }
 
             file.close();
-
-            return std::map<std::string, std::string>();
+            return configuration;
         } else {
             throw FileNotFoundException();
         }
     }
 
-    std::map<std::string, std::string> File::load() {
+    std::map<std::string, std::string> File::load() const {
         return load(_path);
+    }
+
+    void File::save(const std::string &path, const std::map<std::string, std::string> &map) {
+        std::ofstream file(path);
+
+        if (file.is_open()) {
+            for (auto const&[key, value] : map) {
+                file << key << "=" << value << std::endl;
+            }
+
+            file.close();
+        } else {
+            throw FileNotFoundException();
+        }
+    }
+
+    void File::save(const std::map<std::string, std::string> &map) const {
+        save(_path, map);
     }
 }
