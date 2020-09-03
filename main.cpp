@@ -2,17 +2,13 @@
 // Created by seweryn.gladysz on 02.09.2020.
 //
 
-#include "library.h"
-#include "classes/Parser.h"
-#include "classes/Serializer.h"
+#include <string>
 
-class A : public FlowerpotConfiguration::ConfigurationSerializable {
+class Car {
 public:
-    std::string serialize() const override {
-        return "i:" + std::to_string(i);
-    }
-private:
-    int i = 4;
+    int year;
+    std::string model;
+    std::string brand;
 };
 
 int main() {

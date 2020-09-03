@@ -14,7 +14,7 @@ namespace FlowerpotConfiguration {
     public:
         File() = default;
 
-        File(const std::string path);
+        explicit File(const std::string path);
 
         File(File &) = default;
 

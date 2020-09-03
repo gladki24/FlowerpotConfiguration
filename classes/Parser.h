@@ -6,7 +6,7 @@
 
 #include <string>
 #include <map>
-#include "ConfigurationParsable.h"
+#include "ConfigurationSerializable.h"
 
 #define FLOWERPOTCONFIGURATION_PARSER_H
 
@@ -23,7 +23,7 @@ namespace FlowerpotConfiguration {
 
         Parser &operator=(const Parser &) = default;
 
-        static void parse(ConfigurationParsable &member, const std::string &value);
+        static void parse(ConfigurationSerializable &member, const std::string &value);
 
         static void parse(int &member, const std::string &value);
 
