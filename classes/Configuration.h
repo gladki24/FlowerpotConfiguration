@@ -27,7 +27,7 @@ using cstrr = const std::string &;
 namespace FlowerpotConfiguration {
     class Configuration {
     public:
-        Configuration() = delete;
+        Configuration() = default;
 
         explicit Configuration(const std::string &);
 
