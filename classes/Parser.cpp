@@ -8,7 +8,7 @@
 
 namespace FlowerpotConfiguration {
 
-    void Parser::parse(ConfigurationParsable &member, const std::string &value) {
+    void Parser::parse(ConfigurationSerializable &member, const std::string &value) {
         member.parse(value);
     }
 

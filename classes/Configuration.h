@@ -3,12 +3,15 @@
 //
 
 #ifndef FLOWERPOTCONFIGURATION_CONFIGURATION_H
-#define FLOWERPOTCONFIGURATION_CONFIGURATION_H
 
 #include <vector>
 #include <string>
 #include <memory>
-#include "ConfigurationSerializable.h"
+#include <map>
+#include "../classes/Serializer.h"
+#include "../classes/Parser.h"
+
+#define FLOWERPOTCONFIGURATION_CONFIGURATION_H
 
 template<class T>
 using Property = std::pair<std::string, std::shared_ptr<T>>;
@@ -17,7 +20,7 @@ template<class T>
 using Properties = std::vector<Property<T>>;
 
 template<class T>
-using sptr = const std::shared_ptr<T>&;
+using ptr = T*;
 
 using cstrr = const std::string &;
 
@@ -25,6 +28,8 @@ namespace FlowerpotConfiguration {
     class Configuration {
     public:
         Configuration() = default;
+
+        explicit Configuration(const std::string &);
 
         ~Configuration() = default;
 
@@ -34,23 +39,29 @@ namespace FlowerpotConfiguration {
 
         Configuration &operator=(const Configuration &) = default;
 
-        void addProp(cstrr, sptr<int>);
+        void load();
 
-        void addProp(cstrr, sptr<long>);
+        void save();
 
-        void addProp(cstrr, sptr<long long>);
+        void addProp(cstrr, ptr<int>);
 
-        void addProp(cstrr, sptr<double>);
+        void addProp(cstrr, ptr<long>);
 
-        void addProp(cstrr, sptr<float>);
+        void addProp(cstrr, ptr<long long>);
 
-        void addProp(cstrr, sptr<bool>);
+        void addProp(cstrr, ptr<double>);
 
-        void addProp(cstrr, sptr<std::string>);
+        void addProp(cstrr, ptr<float>);
 
-        void addProp(cstrr, sptr<ConfigurationSerializable>);
+        void addProp(cstrr, ptr<bool>);
+
+        void addProp(cstrr, ptr<std::string>);
+
+        void addProp(cstrr, ptr<ConfigurationSerializable>);
 
     private:
+        std::string _path;
+
         Properties<int> _intProps = Properties<int>();
         Properties<long> _longProps = Properties<long>();
         Properties<long long> _longLongProps = Properties<long long>();
@@ -61,7 +72,13 @@ namespace FlowerpotConfiguration {
         Properties<ConfigurationSerializable> _serializableProps = Properties<ConfigurationSerializable>();
 
         template<class T>
-        Property<T> _getProperty(const std::string &, sptr<T>) const;
+        Property<T> _getProperty(const std::string &, ptr<T>) const;
+
+        template<class T>
+        void _parseProperties(Properties<T> &, std::map<std::string, std::string> &);
+
+        template<class T>
+        void _serializeProperties(const Properties<T> &, std::map<std::string, std::string> &);
     };
 }
 
