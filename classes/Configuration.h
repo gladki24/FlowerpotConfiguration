@@ -20,7 +20,7 @@ template<class T>
 using Properties = std::vector<Property<T>>;
 
 template<class T>
-using sptr = const std::shared_ptr<T> &;
+using ptr = T*;
 
 using cstrr = const std::string &;
 
@@ -39,25 +39,25 @@ namespace FlowerpotConfiguration {
 
         Configuration &operator=(const Configuration &) = default;
 
-        void update();
+        void load();
 
         void save();
 
-        void addProp(cstrr, sptr<int>);
+        void addProp(cstrr, ptr<int>);
 
-        void addProp(cstrr, sptr<long>);
+        void addProp(cstrr, ptr<long>);
 
-        void addProp(cstrr, sptr<long long>);
+        void addProp(cstrr, ptr<long long>);
 
-        void addProp(cstrr, sptr<double>);
+        void addProp(cstrr, ptr<double>);
 
-        void addProp(cstrr, sptr<float>);
+        void addProp(cstrr, ptr<float>);
 
-        void addProp(cstrr, sptr<bool>);
+        void addProp(cstrr, ptr<bool>);
 
-        void addProp(cstrr, sptr<std::string>);
+        void addProp(cstrr, ptr<std::string>);
 
-        void addProp(cstrr, sptr<ConfigurationSerializable>);
+        void addProp(cstrr, ptr<ConfigurationSerializable>);
 
     private:
         std::string _path;
@@ -72,7 +72,7 @@ namespace FlowerpotConfiguration {
         Properties<ConfigurationSerializable> _serializableProps = Properties<ConfigurationSerializable>();
 
         template<class T>
-        Property<T> _getProperty(const std::string &, sptr<T>) const;
+        Property<T> _getProperty(const std::string &, ptr<T>) const;
 
         template<class T>
         void _parseProperties(Properties<T> &, std::map<std::string, std::string> &);

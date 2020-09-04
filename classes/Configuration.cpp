@@ -9,7 +9,7 @@ namespace FlowerpotConfiguration {
 
     Configuration::Configuration(const std::string &path) : _path(path) {}
 
-    void Configuration::update() {
+    void Configuration::load() {
         std::map<std::string, std::string> propertiesMap = File::load(_path);
         _parseProperties(_intProps, propertiesMap);
         _parseProperties(_longProps, propertiesMap);
@@ -36,40 +36,40 @@ namespace FlowerpotConfiguration {
         File::save(_path, propertiesMap);
     }
 
-    void Configuration::addProp(cstrr propertyName, sptr<int> value) {
+    void Configuration::addProp(cstrr propertyName, ptr<int> value) {
         _intProps.push_back(_getProperty(propertyName, value));
     }
 
-    void Configuration::addProp(cstrr propertyName, sptr<long> value) {
+    void Configuration::addProp(cstrr propertyName, ptr<long> value) {
         _longProps.push_back(_getProperty(propertyName, value));
     }
 
-    void Configuration::addProp(cstrr propertyName, sptr<long long> value) {
+    void Configuration::addProp(cstrr propertyName, ptr<long long> value) {
         _longLongProps.push_back(_getProperty(propertyName, value));
     }
 
-    void Configuration::addProp(cstrr propertyName, sptr<double> value) {
+    void Configuration::addProp(cstrr propertyName, ptr<double> value) {
         _doubleProps.push_back(_getProperty(propertyName, value));
     }
 
-    void Configuration::addProp(cstrr propertyName, sptr<float> value) {
+    void Configuration::addProp(cstrr propertyName, ptr<float> value) {
         _floatProps.push_back(_getProperty(propertyName, value));
     }
 
-    void Configuration::addProp(cstrr propertyName, sptr<bool> value) {
+    void Configuration::addProp(cstrr propertyName, ptr<bool> value) {
         _boolProps.push_back(_getProperty(propertyName, value));
     }
 
-    void Configuration::addProp(cstrr propertyName, sptr<std::string> value) {
+    void Configuration::addProp(cstrr propertyName, ptr<std::string> value) {
         _stringProps.push_back(_getProperty(propertyName, value));
     }
 
-    void Configuration::addProp(cstrr propertyName, sptr<ConfigurationSerializable> value) {
+    void Configuration::addProp(cstrr propertyName, ptr<ConfigurationSerializable> value) {
         _serializableProps.push_back(_getProperty(propertyName, value));
     }
 
     template<class T>
-    Property<T> Configuration::_getProperty(const std::string &propertyName, sptr<T> value) const {
+    Property<T> Configuration::_getProperty(const std::string &propertyName, ptr<T> value) const {
         Property<T> property(propertyName, value);
         return property;
     }
