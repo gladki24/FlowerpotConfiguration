@@ -3,12 +3,15 @@
 //
 
 #ifndef FLOWERPOTCONFIGURATION_CONFIGURATION_H
-#define FLOWERPOTCONFIGURATION_CONFIGURATION_H
 
 #include <vector>
 #include <string>
 #include <memory>
-#include "ConfigurationSerializable.h"
+#include <map>
+#include "../classes/Serializer.h"
+#include "../classes/Parser.h"
+
+#define FLOWERPOTCONFIGURATION_CONFIGURATION_H
 
 template<class T>
 using Property = std::pair<std::string, std::shared_ptr<T>>;
@@ -17,14 +20,16 @@ template<class T>
 using Properties = std::vector<Property<T>>;
 
 template<class T>
-using sptr = const std::shared_ptr<T>&;
+using sptr = const std::shared_ptr<T> &;
 
 using cstrr = const std::string &;
 
 namespace FlowerpotConfiguration {
     class Configuration {
     public:
-        Configuration() = default;
+        Configuration() = delete;
+
+        explicit Configuration(const std::string &);
 
         ~Configuration() = default;
 
@@ -33,6 +38,10 @@ namespace FlowerpotConfiguration {
         Configuration(Configuration &&) = default;
 
         Configuration &operator=(const Configuration &) = default;
+
+        void update();
+
+        void save();
 
         void addProp(cstrr, sptr<int>);
 
@@ -51,6 +60,8 @@ namespace FlowerpotConfiguration {
         void addProp(cstrr, sptr<ConfigurationSerializable>);
 
     private:
+        std::string _path;
+
         Properties<int> _intProps = Properties<int>();
         Properties<long> _longProps = Properties<long>();
         Properties<long long> _longLongProps = Properties<long long>();
@@ -62,6 +73,12 @@ namespace FlowerpotConfiguration {
 
         template<class T>
         Property<T> _getProperty(const std::string &, sptr<T>) const;
+
+        template<class T>
+        void _parseProperties(Properties<T> &, std::map<std::string, std::string> &);
+
+        template<class T>
+        void _serializeProperties(const Properties<T> &, std::map<std::string, std::string> &);
     };
 }
 

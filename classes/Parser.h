@@ -6,7 +6,7 @@
 
 #include <string>
 #include <map>
-#include "ConfigurationSerializable.h"
+#include "Serializer.h"
 
 #define FLOWERPOTCONFIGURATION_PARSER_H
 
