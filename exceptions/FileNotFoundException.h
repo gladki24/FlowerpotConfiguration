@@ -3,13 +3,17 @@
 //
 
 #ifndef CONFIGURATION_FILENOTFOUNDEXCEPTION_H
+
 #include "Exception.h"
+
 #define CONFIGURATION_FILENOTFOUNDEXCEPTION_H
 
 namespace FlowerpotConfiguration {
     class FileNotFoundException : public Exception {
     public:
         FileNotFoundException();
+
+        explicit FileNotFoundException(const std::string &);
     };
 }
 

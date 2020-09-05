@@ -6,4 +6,6 @@
 
 namespace FlowerpotConfiguration {
     FileNotFoundException::FileNotFoundException() : Exception("File not found") {}
+
+    FileNotFoundException::FileNotFoundException(const std::string &path) : Exception("File not found: " + path) {}
 }

@@ -4,6 +4,7 @@
 
 #include "File.h"
 #include "../exceptions/FileNotFoundException.h"
+#include "../exceptions/FileCreatingException.h"
 #include <fstream>
 #include <iostream>
 #include <regex>
@@ -45,7 +46,7 @@ namespace FlowerpotConfiguration {
             file.close();
             return configuration;
         } else {
-            throw FileNotFoundException();
+            throw FileNotFoundException(path);
         }
     }
 
@@ -63,7 +64,7 @@ namespace FlowerpotConfiguration {
 
             file.close();
         } else {
-            throw FileNotFoundException();
+            throw FileCreatingException();
         }
     }
 
