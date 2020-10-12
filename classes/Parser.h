@@ -10,7 +10,7 @@
 
 #define FLOWERPOTCONFIGURATION_PARSER_H
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
     class Parser {
     public:
         Parser() = default;

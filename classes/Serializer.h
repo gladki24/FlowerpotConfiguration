@@ -9,7 +9,7 @@
 
 #define FLOWERPOTCONFIGURATION_SERIALIZER_H
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
     class Serializer {
     public:
         Serializer() = default;

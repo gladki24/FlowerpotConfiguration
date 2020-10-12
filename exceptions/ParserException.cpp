@@ -4,7 +4,7 @@
 
 #include "ParserException.h"
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
     ParserException::ParserException(): Exception("Parser exception") {}
 
     ParserException::ParserException(const std::string &type, const std::string &value)

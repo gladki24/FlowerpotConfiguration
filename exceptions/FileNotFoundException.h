@@ -8,7 +8,7 @@
 
 #define CONFIGURATION_FILENOTFOUNDEXCEPTION_H
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
     class FileNotFoundException : public Exception {
     public:
         FileNotFoundException();

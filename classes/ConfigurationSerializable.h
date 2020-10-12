@@ -8,7 +8,7 @@
 
 #endif //FLOWERPOTCONFIGURATION_CONFIGURATIONSERIALIZABLE_H
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
     class ConfigurationSerializable {
     public:
         ~ConfigurationSerializable() = default;

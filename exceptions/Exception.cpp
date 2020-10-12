@@ -4,7 +4,7 @@
 
 #include "Exception.h"
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
     Exception::Exception(const char* message) : std::runtime_error(message) {}
 
     Exception::Exception(const std::string& message) : std::runtime_error(message) {}

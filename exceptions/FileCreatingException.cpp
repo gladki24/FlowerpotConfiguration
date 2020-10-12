@@ -4,6 +4,6 @@
 
 #include "FileCreatingException.h"
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
     FileCreatingException::FileCreatingException() : Exception("Error during creating file") {}
 }

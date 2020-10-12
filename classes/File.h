@@ -9,7 +9,7 @@
 
 #define CONFIGURATION_FILE_H
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
     class File {
     public:
         File() = default;

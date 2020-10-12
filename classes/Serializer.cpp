@@ -4,7 +4,7 @@
 
 #include "Serializer.h"
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
 
     std::string Serializer::serialize(const ConfigurationSerializable &value) {
         return value.serialize();

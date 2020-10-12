@@ -6,7 +6,7 @@
 #include "Exception.h"
 #define FLOWERPOTCONFIGURATION_FILECREATINGEXCEPTION_H
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
     class FileCreatingException : public Exception {
     public:
         FileCreatingException();
