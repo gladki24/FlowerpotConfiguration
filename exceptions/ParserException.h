@@ -6,7 +6,7 @@
 #include "Exception.h"
 #define FLOWERPOTCONFIGURATION_PARSEREXCEPTION_H
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
 
     class ParserException : public Exception {
     public:

@@ -9,7 +9,7 @@
 #include <iostream>
 #include <regex>
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
 
     File::File(const std::string path) : _path(path) {}
 

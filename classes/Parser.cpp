@@ -6,7 +6,7 @@
 #include "Parser.h"
 #include "../exceptions/ParserException.h"
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
 
     void Parser::parse(ConfigurationSerializable &member, const std::string &value) {
         member.parse(value);

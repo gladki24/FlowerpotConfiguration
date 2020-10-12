@@ -24,7 +24,7 @@ using ptr = T*;
 
 using cstrr = const std::string &;
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
     class Configuration {
     public:
         Configuration() = default;

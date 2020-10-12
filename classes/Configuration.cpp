@@ -5,7 +5,7 @@
 #include "Configuration.h"
 #include "../classes/File.h"
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
 
     Configuration::Configuration(const std::string &path) : _path(path) {}
 

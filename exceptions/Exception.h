@@ -9,7 +9,7 @@
 
 #define CONFIGURATION_EXCEPTION_H
 
-namespace FlowerpotConfiguration {
+namespace Flowerpot {
     class Exception : public std::runtime_error {
     public:
         explicit Exception(const char *message);
